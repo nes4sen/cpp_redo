@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nosahimi <nosahimi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/03 09:41:29 by nosahimi          #+#    #+#             */
-/*   Updated: 2026/02/03 18:43:09 by nosahimi         ###   ########.fr       */
+/*   Created: 2026/02/03 18:43:51 by nosahimi          #+#    #+#             */
+/*   Updated: 2026/02/03 18:46:28 by nosahimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-void PhoneBook::addContacts()
+int main()
 {
-    Contact page;
-
+    std::string prompt;
     
+    while (1)
+    {
+        std::getline(std::cin, prompt);
+        if ()
+    }
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nosahimi <nosahimi@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: nosahimi <nosahimi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 09:43:20 by nosahimi          #+#    #+#             */
-/*   Updated: 2026/02/03 10:20:10 by nosahimi         ###   ########.fr       */
+/*   Updated: 2026/02/03 16:52:40 by nosahimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ class Contact
 	std::string		_firstName;
 	std::string		_lastName;
 	std::string		_nickName;
-	int				_number; 
 	std::string		_darkSecret;
+	int				_number; 
 
 	public :
 		void 		setFirstName(std::string firstName);
