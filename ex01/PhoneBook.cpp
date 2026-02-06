@@ -6,53 +6,12 @@
 /*   By: nosahimi <nosahimi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 09:41:29 by nosahimi          #+#    #+#             */
-/*   Updated: 2026/02/05 14:28:53 by nosahimi         ###   ########.fr       */
+/*   Updated: 2026/02/05 22:25:59 by nosahimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
+#include "PhoneBookUtils.cpp"
 
-bool PhoneBook::_isValidPhoneNum(std::string num)
-{
-	for (int i = 0; i < num.length(); i++)
-	{
-		if (!std::isdigit(num[i]))
-			return (false);
-	}
-	return (true);
-}
-
-bool PhoneBook::_isAllWhiteSpaces(std::string str)
-{
-	for (int i = 0; i < str.length(); i++)
-	{
-		if (!std::isspace(str[i]))
-			return (false);
-	}
-	return (true);
-}
-
-std::string	PhoneBook::_GetValidInput(std::string str)
-{
-	std::string prompt;
-
-	std::cout << str;
-	while (std::getline(std::cin, prompt))
-	{
-		if (prompt.empty() || _isAllWhiteSpaces(str))
-		{
-			std::cout << "--- PLEASE ENTER A VALID INPUT !! ---\n";
-			continue ;
-		}
-		if (str == "Number : " && _isValidPhoneNum(str))
-		{
-			std::cout << "PLEASE ENTER A VALID PHONE NUMBER !!\n";
-			continue ;
-		}
-		return (prompt);
-	}
-	return ("");
-}
 
 bool PhoneBook::addContacts()
 {
@@ -83,13 +42,32 @@ bool PhoneBook::addContacts()
 		return (false);
 	else
 		page.setFirstName(result);
+	
+	std::cout << "New contact was added in page " << _contactIndex % 8 << "\n";
+	_contact[_contactIndex % 8] = page;
+	_contactIndex++;
 	return (true);
 }
 
 void PhoneBook::findContact()
 {
-	std::string prompt;
+	std::cout << " ___________________________________________ " << "\n";
+	std::cout << "|     Index|First Name| Last Name|  Nickname|" << "\n";
+	std::cout << "|__________|__________|__________|__________|" << "\n";
 
-	std::getline(std::cin, prompt);
-	if (prompt.empty() || prompt >= '')
+	int limit = _contactIndex;
+	if (limit > 8)
+		limit = 8;
+
+	for (int i = 0; i < limit; i++)
+	{
+		std::cout << "|" << std::setw(10) << i;
+		std::cout << "|" << std::setw(10) << _format(_contact[i].getFirstName());
+		std::cout << "|" << std::setw(10) << _format(_contact[i].getLastName());
+		std::cout << "|" << std::setw(10) << _format(_contact[i].getNickName());
+		std::cout << "|" << "\n";
+	}
+	std::cout << "|__________|__________|__________|__________|" << "\n";
+
+	_ContactIndexSearch();
 }

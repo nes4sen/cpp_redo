@@ -6,7 +6,7 @@
 /*   By: nosahimi <nosahimi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 18:43:51 by nosahimi          #+#    #+#             */
-/*   Updated: 2026/02/05 14:58:58 by nosahimi         ###   ########.fr       */
+/*   Updated: 2026/02/05 22:29:57 by nosahimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int main()
 {
-	
     std::string prompt;
     PhoneBook	PhoneBook;
 
@@ -23,7 +22,10 @@ int main()
         if (!std::getline(std::cin, prompt))
 			break ;
         if (prompt == "ADD")
-			PhoneBook.addContacts();
+		{
+			if (!PhoneBook.addContacts())
+				break ;
+		}			
 		else if (prompt == "SEARCH")
 			PhoneBook.findContact();
 		else if (prompt == "EXIT")
@@ -31,5 +33,4 @@ int main()
 		else
 			std::cout << "Please enter an valid command!!\n";
     }
-	std::cout << "The PhoneBook closed!!\n";
-}
+	std::cout << "\nEOF detected. Exiting.\n";}
