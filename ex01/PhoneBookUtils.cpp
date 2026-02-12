@@ -6,12 +6,12 @@
 /*   By: nosahimi <nosahimi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 22:05:07 by nosahimi          #+#    #+#             */
-/*   Updated: 2026/02/06 16:07:35 by nosahimi         ###   ########.fr       */
+/*   Updated: 2026/02/09 12:25:30 by nosahimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
-#include <iomanip>
+
 
 bool PhoneBook::_isValidPhoneNum(std::string num)
 {
@@ -25,6 +25,8 @@ bool PhoneBook::_isValidPhoneNum(std::string num)
 
 bool PhoneBook::_isAllWhiteSpaces(std::string str)
 {
+	if (str.empty())
+		return (true);
 	for (size_t i = 0; i < str.length(); i++)
 	{
 		if (!std::isspace(str[i]))
@@ -40,15 +42,20 @@ std::string	PhoneBook::_GetValidInput(std::string str)
 	std::cout << str;
 	while (std::getline(std::cin, prompt))
 	{
-		if (prompt.empty() || _isAllWhiteSpaces(str))
+		if (_isAllWhiteSpaces(prompt))
 		{
 			std::cout << "--- PLEASE ENTER A VALID INPUT !! ---\n";
+			std::cout << str;
 			continue ;
 		}
-		if (str == "Number : " && _isValidPhoneNum(str))
+		if (str == "Number : ")
 		{
-			std::cout << "PLEASE ENTER A VALID PHONE NUMBER !!\n";
-			continue ;
+			if (!_isValidPhoneNum(prompt))
+			{
+				std::cout << "PLEASE ENTER A VALID PHONE NUMBER !!\n";
+				std::cout << str;
+				continue ;
+			}
 		}
 		return (prompt);
 	}

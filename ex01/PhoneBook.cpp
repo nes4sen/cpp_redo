@@ -6,12 +6,16 @@
 /*   By: nosahimi <nosahimi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 09:41:29 by nosahimi          #+#    #+#             */
-/*   Updated: 2026/02/05 22:25:59 by nosahimi         ###   ########.fr       */
+/*   Updated: 2026/02/09 12:11:58 by nosahimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBookUtils.cpp"
+#include "PhoneBook.hpp"
 
+PhoneBook::PhoneBook()
+{
+	_contactIndex = 0;
+}
 
 bool PhoneBook::addContacts()
 {
@@ -41,7 +45,7 @@ bool PhoneBook::addContacts()
 	if ((result = _GetValidInput("Dark secret : ")).empty())
 		return (false);
 	else
-		page.setFirstName(result);
+		page.setDarkSecret(result);
 	
 	std::cout << "New contact was added in page " << _contactIndex % 8 << "\n";
 	_contact[_contactIndex % 8] = page;
